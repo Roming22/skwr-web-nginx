@@ -1,0 +1,23 @@
+p{ line-height: 1em; }
+
+h1, h2, h3, h4{
+	color: orange;
+	font-weight: normal;
+	line-height: 1.1em;
+	margin: 0 0 .5em 0;
+}
+
+h1{ font-size: 1.7em; }
+
+body{
+	font-family: arial; font-size: 100%; line-height: 1.2em; width: 100%; margin: 0; background: #eee;
+	font-weight: normal;
+}
+
+#page{ margin: 20px; }
+		
+#content{
+	margin: 40px 0;
+	clear: both;
+}
+

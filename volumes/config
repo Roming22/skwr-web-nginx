@@ -1,1 +1,2 @@
-# www:/opt/webserver/www:ro
+secret/certs:/opt/module/etc/certs:ro
+data:/data:ro
