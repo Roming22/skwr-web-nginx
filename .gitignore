@@ -1,2 +1,1 @@
-etc/secret.env
-volumes/secret
+*.secret
