@@ -1,2 +1,0 @@
-secret/certs:/opt/module/etc/certs:ro
-data:/data:ro

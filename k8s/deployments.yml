@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+  namespace: web
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: k3d-registry.localhost:5000/skwr/web/nginx
+          name: nginx
+          envFrom:
+            - configMapRef:
+                name: nginx.env
+          volumeMounts:
+          - name: certs
+            mountPath: "/opt/module/etc/certs"
+            readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: nginx-certs

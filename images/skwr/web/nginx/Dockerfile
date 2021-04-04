@@ -12,19 +12,22 @@ HEALTHCHECK --start-period=10s --interval=30s --timeout=5s --retries=3 \
 #
 # Add packages
 #
-RUN apk add bash curl gettext nginx nmap rsync sudo
+RUN apk add bash bind-tools curl gettext nginx nmap rsync sudo
 
-RUN rm /etc/nginx/conf.d/default.conf \
-    && mkdir -p /run/nginx \
+RUN mkdir -p /run/nginx \
     && echo 'skwr	ALL=(root) NOPASSWD: /bin/cp /tmp/nginx.conf /etc/nginx/nginx.conf' > /etc/sudoers.d/nginx \
     && echo 'skwr	ALL=(root) NOPASSWD: /usr/sbin/nginx' >> /etc/sudoers.d/nginx \
-    && echo 'skwr	ALL=(root) NOPASSWD: /usr/bin/rsync --archive --delete /tmp/conf.d/ /etc/nginx/conf.d' >> /etc/sudoers.d/nginx
+    && echo 'skwr	ALL=(root) NOPASSWD: /usr/bin/rsync --archive --checksum --delete /tmp/conf.d/ /etc/nginx/conf.d' >> /etc/sudoers.d/nginx \
+    && addgroup skwr nginx
 
 
 # Add module
 COPY module /opt/module
-RUN cd /opt/module/bin;\ 
-    chmod +x *.sh
+RUN cd /opt/module/bin \
+    && chmod +x *.sh \
+    && rm -rf /var/lib/nginx/html \
+    && ln -s /opt/module/data/html /var/lib/nginx/html
+
 ENTRYPOINT ["run.sh"]
 
 EXPOSE 80

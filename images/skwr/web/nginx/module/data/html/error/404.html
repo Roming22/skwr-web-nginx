@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="shortcut icon" type="image/png" href="/error/favicon.png" />
+	<meta charset="utf-8" />
+	<title>Error 404</title>
+	<style>
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			margin: auto;
+			background-color: #424242;
+			font-family: Verdana, Arial, sans-serif;
+		}
+
+		.error_bubble {
+			font-family: Arial, helvetica, sans-serif;
+			font-weight: bold;
+			border-radius: 8px;
+			-moz-border-radius: 8px;
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			padding: 50px;
+			background: none repeat scroll 0% 0% hsl(345, 82%, 48%);
+		}
+
+		.error_bubble div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.error_message {
+			color: #ffffffdc;
+			font-size: 40px;
+			line-height: 1.35em;
+			padding-left: 50px;
+			width: 500px;
+		}
+
+		.error_code {
+			color: #424242e0;
+			font-size: 100px;
+			line-height: 50px;
+			margin-top: 8px
+		}
+
+		.error_code>span {
+			font-size: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="error_bubble">
+		<div class="error_code">404<br><span>ERROR</span></div>
+		<div class="error_message">This is a dead end. Time to turn around.</div>
+	</div>
+</body>
+
+
+</html>
